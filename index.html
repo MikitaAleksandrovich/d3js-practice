@@ -1,28 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#fffffff" />
-        <meta name="description" content="Practice D3JS" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffffff" />
+    <meta name="description" content="Practice D3JS" />
 
-        <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+    <title>
+        D3 JS Practice
+    </title>
+</head>
+
+<body>
+
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+    <p>Hello World!</p>
+
+    <br/>
+    <br/>
+
+    <button onclick="onChangeColor()">
+        Change text color
+    </button>
+
+    <br />
+    <br />
+
+    <button onclick="onChangeBackground()">
+        Change background color
+    </button>
+
+</body>
+
+<script>
+
+    // // Change color of p elements using JS
+    // const paragraphs = document.getElementsByTagName("p");
+    // for(let i = 0; i < paragraphs.length; i++) {
+    //     let paragraph = paragraphs.item(i);
+    //     paragraph.style.setProperty("color", "blue");
+    // }
 
 
-        <title>
-            D3 JS Practice
-        </title>
-    </head>
-
-    <body>
-        <h1>Hello World</h1>
-    </body>
-
-    <script>
-        
+    // // Change color of p elements using d3
+    // d3.selectAll("p").style("color", "blue", null);
+    // d3.select('body').style('background-color', 'gray');
 
 
-    </script>
+    // // Randomly style colors of p using d3
+    // d3.selectAll("p").style("color", () => "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+
+    // d3.selectAll("p").style("color", (d, i) => {
+    //     return i % 2 ? "#ccc" : "#fff";
+    // });
+
+    // // Dynamicly change font-size of p using an array of data (values)
+    // d3.selectAll("p")
+    //     .data([12, 25, 5, 30, 12, 18])
+    //     .style("font-size", (d) => { 
+    //         return d + "px"; 
+    //     });
+
+    const data_d3 = [12, 25, 5, 30, 12, 12];
+
+    // d3.selectAll("p")
+    //     .data(data_d3)
+    //         .style("font-size", (d) => { return d + "px"});
+
+
+
+    // // Add and delete data-nodes using enter and exit
+    // const p = d3.select("body")
+    //     .selectAll("p")
+    //     .data(data_d3)
+    //     .text((d) => { return d; });
+
+    // // // Enter… 
+    // p.enter().append("p")
+    //     .text((d) => { return d; });
+
+    // // // Exit…
+    // p.exit().remove();
+
+
+    // d3 transitions 
+    const onChangeBackground = () => {
+        d3.select("body")
+            .transition()
+            .duration(800)
+            .style("background-color", "grey");
+    }
+
+    const onChangeColor = () => {
+        d3.selectAll("p")
+            .transition()
+            .duration(550)
+            .style("color", (d, i) => {
+                return i % 2 ? "yellow" : "red";
+            });
+    };
+
+
+
+
+
+</script>
 
 </html>
