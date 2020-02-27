@@ -26,20 +26,42 @@ const data = [
 ];
 
 
-data.map( (item) => {
-    svg.append("rect")
-        .attr("class", "bar")
-        .attr("height", 100)
-});
-
-
 const draw = () => {
-    d3.selectAll(".bar")
-        .data(data)
-            .attr("width", (d) => d.value )
-            .attr("y", (d, n) => n * 100 )
+
+    const bars = svg.selectAll(".bar").data(data);
+
+    // Add new items initially
+    bars
+        .enter()
+            .append("rect")
+                .attr("class", "bar new")
+                .attr("height", 100)
+                .attr("width", (d) => d.value)
+                .attr("y", (d, n) => n * 100);
+
+
+    // Update items every time draw is colling
+    bars
+        .attr("class", "bar updated")
+        .attr("width", (d) => d.value )
+        .attr("y", (d,n) => n * 100 );
 };
 
 
 draw();
+
+// Imitate dynamicly update
+setTimeout(() => {
+        data[1].value = 256;
+        data[2].value = 350;
+        draw();
+}, 2000);
+
+
+
+
+
+
+
+
 
