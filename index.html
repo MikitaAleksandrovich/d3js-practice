@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="./styles.css">
 
-    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./d3.min.js"></script>
 
     <title>
         D3 JS Practice
@@ -18,7 +18,8 @@
 
 <body>
 
-    <p>Hello World!</p>
+    <!-- Entering tutorial  -->
+    <!-- <p>Hello World!</p>
     <p>Hello World!</p>
     <p>Hello World!</p>
     <p>Hello World!</p>
@@ -38,7 +39,14 @@
 
     <button onclick="onChangeBackground()">
         Change background color
-    </button>
+    </button> -->
+
+    
+    
+
+
+
+
 
 </body>
 
@@ -71,7 +79,7 @@
     //         return d + "px"; 
     //     });
 
-    const data_d3 = [12, 25, 5, 30, 12, 12];
+    // const data_d3 = [12, 25, 5, 30, 12, 12];
 
     // d3.selectAll("p")
     //     .data(data_d3)
@@ -93,27 +101,26 @@
     // p.exit().remove();
 
 
-    // d3 transitions 
-    const onChangeBackground = () => {
-        d3.select("body")
-            .transition()
-            .duration(800)
-            .style("background-color", "grey");
-    }
+    // // d3 transitions 
+    // const onChangeBackground = () => {
+    //     d3.select("body")
+    //         .transition()
+    //         .duration(800)
+    //         .style("background-color", "grey");
+    // }
 
-    const onChangeColor = () => {
-        d3.selectAll("p")
-            .transition()
-            .duration(550)
-            .style("color", (d, i) => {
-                return i % 2 ? "yellow" : "red";
-            });
-    };
-
-
-
-
+    // const onChangeColor = () => {
+    //     d3.selectAll("p")
+    //         .transition()
+    //         .duration(550)
+    //         .style("color", (d, i) => {
+    //             return i % 2 ? "yellow" : "red";
+    //         });
+    // };
 
 </script>
+
+<script src="./index.js"></script>
+
 
 </html>

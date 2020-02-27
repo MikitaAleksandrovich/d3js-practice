@@ -1,8 +1,14 @@
 body {
     font-family: "Comfortaa", sans-serif !important;
     padding: 0;
-    margin: 0;
+    margin: 30px;
 }
+
+.bar {
+    fill: steelblue;
+}
+
+
 
 
 
