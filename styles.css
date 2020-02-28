@@ -12,6 +12,13 @@ body {
     fill: rgb(243, 47, 47);
 }
 
+.axis-x {
+    fill: none;
+    font-size: 10;
+    text-anchor: middle;
+    font-family: sans-serif;
+}
+
 
 
 
