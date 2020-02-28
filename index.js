@@ -17,6 +17,7 @@ const svg = d3.select("body").append("svg")
     .append("g")
     .attr("tranform", `translate(${margin.left}, ${margin.top})`);
 
+
 const data = [
     { id: 1, title: 'hello', value: 22 },
     { id: 2, title: 'hello1', value: 2 },
@@ -25,7 +26,9 @@ const data = [
     { id: 5, title: 'hello4', value: 123 },
 ];
 
-// Set maximum width in function (scaleLiner)
+
+
+// Set x scaler and axis
 const x = d3.scaleLinear()
     .range([0, width]);
 
@@ -36,6 +39,22 @@ svg
     .append("g")
     .attr("class", "axis-x")
     .call(xAxis);
+
+
+// Set y scaler and axis
+const y = d3.scaleBand()
+    .range([0, height]);
+
+const yAxis = d3.axisRight()
+    .tickPadding([10])
+    .scale(y);
+
+svg
+    .append("g")
+    .attr("class", "axis-y")
+    .call(yAxis);
+
+
 
 const draw = () => {
 
@@ -51,6 +70,9 @@ const draw = () => {
     ];
 
     x.domain(valueRange);
+
+    y.domain(data.map(item => item.title))
+        .range([0, data.length * barHeight + data.length * barOffset - barOffset]);
 
     // Add new items initially
     const addBars = bars
@@ -83,7 +105,11 @@ const draw = () => {
 
     svg.select(".axis-x")
         .transition()
-            .call(xAxis);
+        .call(xAxis);
+
+    svg.select(".axis-y")
+        .transition()
+        .call(yAxis);
 };
 
 draw();
