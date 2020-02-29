@@ -1,0 +1,24 @@
+{
+  "name": "d3js-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikitaAleksandrovich/d3js-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikitaAleksandrovich/d3js-practice/issues"
+  },
+  "homepage": "https://github.com/MikitaAleksandrovich/d3js-practice#readme",
+  "dependencies": {
+    "d3-fetch": "^1.1.2",
+    "http-proxy": "^1.18.0"
+  }
+}
