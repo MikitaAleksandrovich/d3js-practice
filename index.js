@@ -1,3 +1,5 @@
+// // Bar chart with fetched crypto currency data
+
 // // Margin conversation 
 // const margin = {
 //     top: 50,
@@ -113,6 +115,7 @@
 // }
 
 
+// Bar Chat with data based on complexity of English Words
 
 // Calculate the complexity of text based on most common English Words
 const common_100_EnglishWords = ["the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", 
@@ -138,7 +141,6 @@ console.log(common_1000_EnglishWords);
 const complexText = (text) => {
 
   const wordsArray = text.replace(/[,.!?]/, "").split(/\s+/);
-  console.log(wordsArray);
 
   let numberMatches = 0;
 
@@ -148,10 +150,9 @@ const complexText = (text) => {
     }
   });
 
-  const textComplexity = (numberMatches / wordsArray.length * 100).toFixed(2);
+  const textComplexity = (numberMatches / wordsArray.length * 100);
   
-  return `${textComplexity}%`;
-
+  return Math.round(textComplexity);
 };
 
 console.log(complexText("Is there is some new thing over there?"));  // Output 100%
@@ -159,6 +160,99 @@ console.log(complexText("Do you remember when the Second world War begin?"));  /
 console.log(complexText("seconder adfgbadb athwrtb aerghwetbwr adfbeqttgrds fgqer"));  // Output 0%
 console.log(complexText("Translate words while reading an article or watching your favourite movie. Add words to your personal lessons or train them in the text. Repeat words in the exact context you found them. Understand jokes and expressions. Enrich your personal vocabulary. Learn and repeat words with Easylang Tutor"));  // Output 51.06%
 
+
+
+// Margin conversation https://bl.ocks.org/mbostock/3019563
+const margin = { 
+    top: 50, 
+    right: 50, 
+    bottom: 50, 
+    left: 50
+  };
+  
+  const width = 900 - margin.left - margin.right;
+  const height = 900 - margin.top - margin.bottom;
+  
+  // https://github.com/d3/d3-selection
+  const svg = d3.select('body').append('svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+      .attr('transform', `translate(${margin.left}, ${margin.top})`);
+  
+  
+  const data = [
+    { id: 1, title: 'Text № 1', value: complexText("Is there is some new thing over there?") },
+    { id: 2, title: 'Text № 2', value: complexText("Do you remember when the Second world War begin?") },
+    { id: 3, title: 'Text № 3', value: complexText("seconder adfgbadb athwrtb aerghwetbwr adfbeqttgrds fgqer") },
+    { id: 4, title: 'Text № 4', value: complexText("Translate words while reading an article or watching your favourite movie.") },
+  ];
+
+  
+  
+  const x = d3.scaleLinear()
+    .range([0, width]);
+  
+  const xAxis = d3.axisTop()
+        .scale(x);
+  
+  svg
+    .append('g')
+    .attr('class', 'axis-x')
+    .call(xAxis);
+  
+  const y = d3.scaleBand()
+        .range([0, height]);
+  
+  const yAxis = d3.axisLeft()
+    .scale(y);
+  
+  svg.append('g')
+     .attr('class', 'y-axis')
+     .call(yAxis);
+  
+  
+  function draw() {
+    const barHeight = 100;
+    const barOffset = 3;
+  
+    const valueRange = [
+      0,
+      d3.max(data, d => d.value)
+    ];
+  
+    x.domain(valueRange);
+    y
+      .domain(data.map(d => d.title))
+      .range([0, data.length * barHeight + data.length * barOffset - barOffset]);
+  
+    const bars = svg.selectAll('.bar').data(data);
+   
+    const addBars = bars
+      .enter()
+        .append('rect')
+          .attr('class', 'bar')
+          .attr('height', barHeight);
+  
+    addBars.merge(bars)
+      .transition()
+        .duration(1000)
+          .attr('width', d => x(d.value))
+          .attr('y', (d, n) => n * barHeight + n * barOffset);
+  
+    svg
+      .select('.axis-x')
+      .transition()
+        .call(xAxis);
+  
+    svg
+      .select('.y-axis')
+        .transition()
+        .call(yAxis);
+  }
+  
+  draw();
+  
 
 
 

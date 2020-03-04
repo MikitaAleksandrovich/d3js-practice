@@ -1,4 +1,6 @@
 
+// Module that can be imported
+
 // Calculate the complexity of text based on most common English Words
 const common_100_EnglishWords = ["the", "of", "and", "a", "to", "in", "is", "you", "that", "it", "he", "was", 
                 "for", "on", "are", "as", "with", "his", "they", "I", "at", "be", "this", "have", 
