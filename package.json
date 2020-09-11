@@ -19,6 +19,6 @@
   "homepage": "https://github.com/MikitaAleksandrovich/d3js-practice#readme",
   "dependencies": {
     "d3-fetch": "^1.1.2",
-    "http-proxy": "^1.18.0"
+    "http-proxy": "^1.18.1"
   }
 }
